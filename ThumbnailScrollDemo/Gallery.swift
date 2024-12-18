@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// Show scrolling thumbnail views underneath a single detail view that updates as the thumbnails scroll.
+/// With thanks to https://www.appcoda.com/scrollview-paging/.
 struct Gallery: View {
     let placesManager: PlacesManager = PlacesManager()
     
