@@ -16,7 +16,7 @@ class PlacesManager {
                           City(name: "santorini"),
                           City(name: "budapest"),
                           City(name: "london"),
-                          City(name: "cuba"),
+                          City(name: "havana"),
                           City(name: "osaka"),
                           City(name: "kyoto"),
                           City(name: "seoul"),

@@ -1,5 +1,5 @@
 //
-//  ItemThumbnail.swift
+//  CityThumbnail.swift
 //  ThumbnailScrollDemo
 //
 //  Created by Hal Mueller on 12/17/24.
@@ -7,16 +7,13 @@
 
 import SwiftUI
 
-struct ItemThumbnail: View {
-    let item: City
+/// Very simple, just show the city's name.
+struct CityThumbnail: View {
+    let city: City
     
     var body: some View {
-        Text(item.name)
+        Text(city.name)
             .frame(height: 100)
             .padding(.horizontal)
     }
-}
-
-#Preview {
-    ItemThumbnail(item: City(name: "hello"))
 }

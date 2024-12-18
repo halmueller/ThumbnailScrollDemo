@@ -14,24 +14,26 @@ struct Gallery: View {
 
     var body: some View {
         VStack {
-            ItemLargeWrapper(cityId: $selectedCityId)
+            CityLargeWrapper(cityId: $selectedCityId)
+            
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 0) {
                     ForEach(placesManager.cities) { city in
                         Button {
                             selectedCityId = city.id
                         } label: {
-                            ItemThumbnail(item: city)
+                            CityThumbnail(city: city)
                                 .scaledToFill()
-                            //                            .frame(height: 200)
                                 .clipShape(RoundedRectangle(cornerRadius: 25.0))
                                 .background(.green)
                                 .padding(.horizontal, 20)
                         }
+                        .buttonStyle(.plain)
                     }
                 }
                 .scrollTargetLayout()
             }
+            .onAppear { selectedCityId = placesManager.cities.first?.id }
             .frame(height: 200, alignment: .bottom)
             .scrollTargetBehavior(.viewAligned)
             .scrollPosition(id: $selectedCityId, anchor: .center)
@@ -39,7 +41,3 @@ struct Gallery: View {
         .environment(placesManager)
     }
 }
-
-//#Preview {
-//    Gallery()
-//}

@@ -1,5 +1,5 @@
 //
-//  ItemLarge.swift
+//  CityLargeView.swift
 //  ThumbnailScrollDemo
 //
 //  Created by Hal Mueller on 12/17/24.
@@ -7,17 +7,15 @@
 
 import SwiftUI
 
-struct ItemLarge: View {
+/// Very simple, just show the city's name. We'll use all caps to be fancy.
+struct CityLargeView: View {
     @Binding var city: City
     
     var body: some View {
         Text(city.name)
+            .textCase(.uppercase)
             .font(.largeTitle)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             .background(Color.red)
     }
 }
-
-//#Preview {
-//    ItemLarge()
-//}
