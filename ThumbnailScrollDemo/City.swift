@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct City: Identifiable, Hashable, Observable {
+struct City: Identifiable, Observable {
     public var id: String { name }
     let name: String
     
