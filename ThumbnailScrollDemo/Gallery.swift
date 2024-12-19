@@ -24,10 +24,9 @@ struct Gallery: View {
                         Button {
                             selectedCityId = city.id
                         } label: {
-                            CityThumbnail(city: city)
+                            CityThumbnail(city: city, selected: selectedCityId == city.id)
                                 .scaledToFill()
-                                .clipShape(RoundedRectangle(cornerRadius: 25.0))
-                                .background(.green)
+                                .clipShape(RoundedRectangle(cornerRadius: 4.0))
                                 .padding(.horizontal, 20)
                         }
                         .buttonStyle(.plain)

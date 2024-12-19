@@ -20,7 +20,7 @@ struct CityLargeWrapper: View {
                 return City.empty
             }
         } set: { _ in
-            // should never be here, but closure is needed to pacify the compiler
+            // should never be here because CityLargeView is readonly, but closure is needed to pacify the compiler.
         }
     }
     
