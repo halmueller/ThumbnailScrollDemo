@@ -17,6 +17,18 @@ struct Gallery: View {
     var body: some View {
         VStack {
             CityLargeWrapper(cityId: $selectedCityId)
+                .gesture(
+                    DragGesture(minimumDistance: 20) // empirically determined value
+                        .onEnded { value in
+                            if value.translation.width < 0 {
+                                let next = placesManager.nextAfter(selectedCityId)
+                                selectedCityId = next?.id
+                            } else {
+                                let previous = placesManager.previousBefore(selectedCityId)
+                                selectedCityId = previous?.id
+                            }
+                        }
+                )
             
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 0) {

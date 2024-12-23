@@ -27,4 +27,30 @@ class PlacesManager {
     func city(with id: String) -> City? {
         cities.first(where: { $0.id == id })
     }
+    
+    public func nextAfter(_ cityID: String?) -> City? {
+        if let cityID,
+           let thisCityIndex = cities.firstIndex(where: { $0.id == cityID}) {
+            if thisCityIndex < cities.count - 1 {
+                let nextCityIndex = thisCityIndex + 1
+                return cities[nextCityIndex]
+            } else {
+                return cities.first
+            }
+        }
+        return nil
+    }
+
+    public func previousBefore(_ cityID: String?) -> City? {
+        if let cityID,
+           let thisCityIndex = cities.firstIndex(where: { $0.id == cityID}) {
+            if thisCityIndex > 0 {
+                let previousCityIndex = thisCityIndex - 1
+                return cities[previousCityIndex]
+            } else {
+                return cities.last
+            }
+        }
+        return nil
+    }
 }

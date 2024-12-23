@@ -21,7 +21,7 @@ struct CityThumbnail: View {
 }
 
 #Preview("thumbnail view") {
-    CityThumbnail(city: city, selected: false)
-    CityThumbnail(city: city, selected: true)
+    CityThumbnail(city: City.sample, selected: false)
+    CityThumbnail(city: City.sample, selected: true)
 }
 
