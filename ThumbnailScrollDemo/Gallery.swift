@@ -42,3 +42,7 @@ struct Gallery: View {
         .environment(placesManager)
     }
 }
+
+#Preview {
+    Gallery()
+}

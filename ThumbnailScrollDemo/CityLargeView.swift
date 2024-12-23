@@ -19,3 +19,9 @@ struct CityLargeView: View {
             .background(Color.red)
     }
 }
+
+#Preview("large view") {
+    @Previewable @State var city = City.sample
+    
+    return CityLargeView(city: $city)
+}

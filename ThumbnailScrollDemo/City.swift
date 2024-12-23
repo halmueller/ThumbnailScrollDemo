@@ -13,4 +13,5 @@ struct City: Identifiable, Observable {
     
     static let notFound: City = .init(name: "Not Found")
     static let empty: City = .init(name: "empty")
+    static let sample: City = .init(name: "sample")
 }

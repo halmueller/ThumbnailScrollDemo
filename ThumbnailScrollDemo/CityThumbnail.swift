@@ -19,3 +19,9 @@ struct CityThumbnail: View {
             .background(selected ? Color.red : Color.blue)
     }
 }
+
+#Preview("thumbnail view") {
+    CityThumbnail(city: city, selected: false)
+    CityThumbnail(city: city, selected: true)
+}
+
