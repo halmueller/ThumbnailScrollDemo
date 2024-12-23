@@ -37,11 +37,11 @@ struct Gallery: View {
                             selectedCityId = city.id
                         } label: {
                             CityThumbnail(city: city, selected: selectedCityId == city.id)
-                                .scaledToFill()
-                                .clipShape(RoundedRectangle(cornerRadius: 4.0))
-                                .padding(.horizontal, 20)
+                                .clipShape(RoundedRectangle(cornerRadius: 4))
                         }
+                        .buttonBorderShape(.roundedRectangle(radius: 4))
                         .buttonStyle(.plain)
+                        .padding(.horizontal, 20)
                     }
                 }
                 .scrollTargetLayout()
