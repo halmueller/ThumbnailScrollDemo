@@ -13,20 +13,29 @@ struct Gallery: View {
     let placesManager: PlacesManager = PlacesManager()
     
     @State private var selectedCityId: City.ID?
+    @State private var offset = CGSize.zero
 
     var body: some View {
         VStack {
-            CityLargeWrapper(cityId: $selectedCityId)
+                CityLargeWrapper(cityId: $selectedCityId)
+                .offset(x: offset.width * 3.0)
                 .gesture(
-                    DragGesture(minimumDistance: 20) // empirically determined value
-                        .onEnded { value in
-                            if value.translation.width < 0 {
-                                let next = placesManager.nextAfter(selectedCityId)
-                                selectedCityId = next?.id
-                            } else {
-                                let previous = placesManager.previousBefore(selectedCityId)
-                                selectedCityId = previous?.id
+                    DragGesture() // empirically determined value
+                        .onEnded { _ in
+                            if abs(offset.width) > 80 {
+                                if offset.width < 0 {
+                                    let next = placesManager.nextAfter(selectedCityId)
+                                    selectedCityId = next?.id
+                                } else {
+                                    let previous = placesManager.previousBefore(selectedCityId)
+                                    selectedCityId = previous?.id
+                                }
                             }
+                            offset = CGSize.zero
+                        }
+                        .onChanged { gesture in
+                            offset = gesture.translation
+                            // https://www.hackingwithswift.com/books/ios-swiftui/moving-views-with-draggesture-and-offset
                         }
                 )
             
@@ -46,11 +55,13 @@ struct Gallery: View {
                 }
                 .scrollTargetLayout()
             }
+            .background(.gray)
             .onAppear { selectedCityId = placesManager.cities.first?.id }
             .frame(height: 200, alignment: .bottom)
             .scrollTargetBehavior(.viewAligned)
             .scrollPosition(id: $selectedCityId, anchor: .center)
         }
+        .background(.yellow)
         .environment(placesManager)
     }
 }
